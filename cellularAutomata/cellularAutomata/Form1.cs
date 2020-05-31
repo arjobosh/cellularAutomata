@@ -28,12 +28,12 @@ namespace cellularAutomata
 
             Bitmap bm = new Bitmap(defaultWidth, defaultHeight);
 
-            CA ca = new CA(cellSize, Canvas.Width / cellSize);
+            CA ca = new CA(cellSize, Canvas.Width / cellSize, ruleSets[2]);
 
             for (int i = 0; i < generations; i++)
             {
                 Canvas.Image = ca.drawCA(bm);
-                ca.generate(ruleSets[2]);
+                ca.generate();
             }
         }
     }

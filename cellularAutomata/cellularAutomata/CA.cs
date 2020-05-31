@@ -11,9 +11,10 @@ namespace cellularAutomata
     {
         int[] cells;
         int cellSize;
+        int ruleSet;
         int generation;
 
-        public CA(int size, int width)
+        public CA(int size, int width, int setNumber)
         {            
             cells = new int[width];
 
@@ -24,10 +25,11 @@ namespace cellularAutomata
 
             cells[cells.Length / 2] = 1;
             cellSize = size;
+            ruleSet = setNumber;
             generation = 0;
         }
 
-        public void generate(int ruleSet)
+        public void generate()
         {            
             int[] nextGen = new int[cells.Length];
 
@@ -45,8 +47,8 @@ namespace cellularAutomata
         }
 
         private int rules(int a, int b, int c, int set)
-        {
-            int[] bits = { a, b, c };
+        {            
+            int[] bits = { a, b, c };   // neighborhood of left, middle, and right cells
             int index = 0;
 
             for (int i = 0; i < bits.Length; i++)
