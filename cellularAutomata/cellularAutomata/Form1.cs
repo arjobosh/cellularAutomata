@@ -19,20 +19,22 @@ namespace cellularAutomata
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
-            int cellSize = 10;
+        {        
+            int cellSize = 8;
             int generations = 40;
+            int defaultWidth = Canvas.Width;
+            int defaultHeight = Canvas.Height;
+            int[] ruleSets = { 30, 90, 110, 184, 222 };
 
-            Bitmap bm = new Bitmap(Canvas.Width, Canvas.Height);            
+            Bitmap bm = new Bitmap(defaultWidth, defaultHeight);
+
             CA ca = new CA(cellSize, Canvas.Width / cellSize);
 
             for (int i = 0; i < generations; i++)
             {
                 Canvas.Image = ca.drawCA(bm);
-                ca.generate();
+                ca.generate(ruleSets[2]);
             }
         }
-
-
     }
 }

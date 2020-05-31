@@ -9,10 +9,9 @@ namespace cellularAutomata
 {
     class CA
     {
-        int[] ruleSet = { 0, 1, 0, 1, 1, 0, 1, 0 };
         int[] cells;
         int cellSize;
-        int generation = 0;
+        int generation;
 
         public CA(int size, int width)
         {            
@@ -25,10 +24,11 @@ namespace cellularAutomata
 
             cells[cells.Length / 2] = 1;
             cellSize = size;
+            generation = 0;
         }
 
-        public void generate()
-        {
+        public void generate(int ruleSet)
+        {            
             int[] nextGen = new int[cells.Length];
 
             for (int i = 1; i < cells.Length - 1; i++)
@@ -37,27 +37,51 @@ namespace cellularAutomata
                 int mid = cells[i];
                 int right = cells[i + 1];
 
-                nextGen[i] = rules(left, mid, right);
+                nextGen[i] = rules(left, mid, right, ruleSet);
             }
 
             cells = nextGen;
             generation++;
         }
 
-        private int rules(int a, int b, int c)
+        private int rules(int a, int b, int c, int set)
         {
             int[] bits = { a, b, c };
-
-            // 2^2 + 2^1 + 2^0
             int index = 0;
 
             for (int i = 0; i < bits.Length; i++)
             {
+                // getting the bits as int
                 index = (index << 1) | bits[i];
             }
 
             //Console.Write(a + ", " + b + ", " + c + " = ");
             //Console.WriteLine(index);
+
+            int[] ruleSet;
+
+            switch (set)
+            {
+                case 30:
+                    ruleSet = new int[8] { 0, 1, 1, 1, 1, 0, 0, 0 };
+                    break;
+                case 90:
+                    ruleSet = new int[8] { 0, 1, 0, 1, 1, 0, 1, 0 };                    
+                    break;
+                case 110:
+                    ruleSet = new int[8] { 0, 1, 1, 0, 1, 1, 1, 0 };
+                    break;
+                case 184:
+                    ruleSet = new int[8] { 1, 0, 1, 1, 1, 0, 0, 0 };
+                    break;
+                case 222:
+                    ruleSet = new int[8] { 1, 1, 0, 1, 1, 1, 1, 0 };
+                    break;                
+                default:
+                    ruleSet = new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 };
+                    break;
+            }
+
             return ruleSet[index];
         }
         

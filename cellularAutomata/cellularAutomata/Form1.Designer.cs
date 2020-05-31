@@ -36,7 +36,7 @@
             // 
             this.Canvas.Location = new System.Drawing.Point(12, 12);
             this.Canvas.Name = "Canvas";
-            this.Canvas.Size = new System.Drawing.Size(600, 600);
+            this.Canvas.Size = new System.Drawing.Size(800, 600);
             this.Canvas.TabIndex = 0;
             this.Canvas.TabStop = false;
             // 
@@ -44,7 +44,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 621);
+            this.ClientSize = new System.Drawing.Size(824, 621);
             this.Controls.Add(this.Canvas);
             this.Name = "Form1";
             this.Text = "Cellular Automata";
