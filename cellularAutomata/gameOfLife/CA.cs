@@ -9,6 +9,7 @@ namespace cellularAutomata
 {
     class CA
     {
+        public int[,] board;
         int[] cells;
         int cellSize;
         int ruleSet;
@@ -27,6 +28,7 @@ namespace cellularAutomata
             cellSize = size;
             ruleSet = setNumber;
             generation = 0;
+
         }
 
         public void generate()
@@ -110,6 +112,31 @@ namespace cellularAutomata
             }
 
             return bm;
+        }
+
+        private void gameOfLife()
+        {
+            int rows = 10, cols = 10;
+            board = new int[rows, cols];
+            Random r = new Random();
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    board[i, j] = r.Next(0, 2);
+                    Console.WriteLine(board[i, j]);
+                }
+            }
+
+            int[,] nextBoard = new int[rows, cols];
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    // get next board generation
+                }
+            }
         }
     }
 }
